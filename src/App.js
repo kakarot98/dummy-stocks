@@ -1,24 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+//import Login from "./components/login/Login";
+import Home from "./components/home/Home";
+import Portfolio from "./components/portfolio/Portfolio";
+import NavBar from "./components/navigation/NavBar";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+  NavLink,
+} from "react-router-dom";
+import { Toolbar, AppBar, Typography, Container } from "@mui/material";
+import { Box } from "@mui/system";
 
 function App() {
+  const { currentUser } = false;
+
+  // const RequireAuth = ({ children }) => {
+  //   return currentUser ? children : <Navigate to="/login" />;
+  // };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <NavBar />
+      <Box>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/portfolio" element={<Portfolio />} />
+        </Routes>
+      </Box>
+    </Router>
   );
 }
 
